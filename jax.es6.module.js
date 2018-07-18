@@ -1,3 +1,4 @@
+/* eslint-env es6 */
 /**
  * Jax - a simple Json Accessor library
  * Usage: Jax.get() and Jax.set()
@@ -29,10 +30,10 @@ function Jax() {
  * @returns {*} the value defined by the path or the default value
  */
 Jax.get = function (json, path, defaultValue) {
-    var pathArr = path.split(".");
-    var obj = json;
-    var dontStop = 1;
-    var i, j;
+    const pathArr = path.split(".");
+    let obj = json;
+    let dontStop = 1;
+    let i, j;
 
     for (i = 0, j = pathArr.length; i < j && dontStop === 1; i++) {
         obj = obj[pathArr[i]];
@@ -52,11 +53,11 @@ Jax.get = function (json, path, defaultValue) {
  * @returns {*} The cloned object with the modifications
  */
 Jax.set = function (json, path, value) {
-    var pathArr = path.split(".");
-    var obj;
-    var i, j;
-    var newObj;
-    var key;
+    const pathArr = path.split(".");
+    let obj;
+    let i, j;
+    let newObj;
+    let key;
 
     if (typeof Object.assign === "function") {
         newObj = Object.assign({}, json);
@@ -84,3 +85,5 @@ Jax.set = function (json, path, value) {
 
     return newObj;
 };
+
+export default Jax;
